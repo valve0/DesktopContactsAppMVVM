@@ -20,8 +20,8 @@ namespace DesktopContactsAppMVVM.ViewModel
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
 
-
         Contact contact;
+
         public ContactDetailsViewModel(Contact contact)
         {
 

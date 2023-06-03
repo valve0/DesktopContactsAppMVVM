@@ -26,6 +26,7 @@ namespace DesktopContactsAppMVVM.Controls
     {
         
 
+        //This is a dependancy property
         public Contact Contact
         {
             get { return (Contact)GetValue(ContactProperty); }

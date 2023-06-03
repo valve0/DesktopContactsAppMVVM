@@ -61,23 +61,21 @@ namespace DesktopContactsAppMVVM.ViewModel
             if (Name != null)
             {
 
-            
-            
-            //Create objects with inputted details
-            Contact contact = new Contact()
-            {
-                Name = Name,
-                Email = Email,
-                PhoneNumber = PhoneNumber
-            };
+                //Create objects with inputted details
+                Contact contact = new Contact()
+                {
+                    Name = Name,
+                    Email = Email,
+                    PhoneNumber = PhoneNumber
+                };
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
-            {
-                connection.CreateTable<Contact>();
-                connection.Insert(contact);
-            }
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                {
+                    connection.CreateTable<Contact>();
+                    connection.Insert(contact);
+                }
 
-            win.Close();
+                win.Close();
 
             }
             else

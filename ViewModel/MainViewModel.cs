@@ -18,6 +18,10 @@ namespace DesktopContactsAppMVVM.ViewModel
 {
     public class MainViewModel:INotifyPropertyChanged
     {
+
+        //Necessary for INotify interface
+        public event PropertyChangedEventHandler? PropertyChanged = delegate { };
+
         private ObservableCollection<Contact> _contacts;
 
         public ObservableCollection<Contact> Contacts
@@ -28,7 +32,8 @@ namespace DesktopContactsAppMVVM.ViewModel
                 if (_contacts != value)
                 {
                     _contacts = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Contacts)));
+
+                    OnPropertyChanged();
                 }
             }
         }
@@ -64,15 +69,7 @@ namespace DesktopContactsAppMVVM.ViewModel
                 }
         }
 
-        private bool CanShowDetailsWindow(object obj)
-        {
-            return true;
-        }
 
-        private bool CanShowNewContactWindow(object obj)
-        {
-            return true;
-        }
 
         private void ShowNewContactWindow(object obj)
         {
@@ -88,6 +85,8 @@ namespace DesktopContactsAppMVVM.ViewModel
 
         }
 
+
+        //DRead database into Observable collection
         private void ReadDatabase()
         {
 
@@ -101,7 +100,8 @@ namespace DesktopContactsAppMVVM.ViewModel
 
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged = delegate { };
+
+
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
@@ -115,5 +115,17 @@ namespace DesktopContactsAppMVVM.ViewModel
             OnPropertyChanged(propertyName);
             return true;
         }
+
+        // Can set conditions if wanted
+        private bool CanShowDetailsWindow(object obj)
+        {
+            return true;
+        }
+
+        private bool CanShowNewContactWindow(object obj)
+        {
+            return true;
+        }
+
     }
 }
